@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-const Card = ({ image, label, onSelect }) => {
+const Card = ({ item, onCardSelect }) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => onSelect({ image, label })}
+      onPress={() => onCardSelect(item)}
     >
-      <Image source={image} style={styles.image} />
-      <Text style={styles.label}>{label}</Text>
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.label}>{item.label}</Text>
     </TouchableOpacity>
   );
 };
