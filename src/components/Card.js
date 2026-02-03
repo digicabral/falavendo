@@ -1,9 +1,12 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 const Card = ({ image, label, onSelect }) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => onSelect({ image, label })}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => onSelect({ image, label })}
+    >
       <Image source={image} style={styles.image} />
       <Text style={styles.label}>{label}</Text>
     </TouchableOpacity>
@@ -12,13 +15,13 @@ const Card = ({ image, label, onSelect }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 8,
     padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     margin: 5,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -30,12 +33,12 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   label: {
     marginTop: 5,
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 

@@ -7,42 +7,63 @@ import TtsService from "../services/TtsService";
 
 const MainScreen = () => {
   const [sentence, setSentence] = useState([]);
+  const [selectedParentCard, setSelectedParentCard] = useState(null);
 
-  const cards = [
-    { id: "1", label: "Eu", image: require("../assets/images/eu.png") },
+  const categories = [
     {
-      id: "2",
-      label: "quero",
-      image: require("../assets/images/quero.png"),
+      id: "feelings",
+      label: "Sentimentos",
+      image: require("../assets/images/sentimentos/alegria.png"),
+      children: [
+        {
+          id: "cold",
+          label: "Frio",
+          image: require("../assets/images/sentimentos/frio.png"),
+        },
+        {
+          id: "alegria",
+          label: "Alegria",
+          image: require("../assets/images/sentimentos/alegria.png"),
+        },
+        {
+          id: "gratidão",
+          label: "Gratidão",
+          image: require("../assets/images/sentimentos/gratidão.png"),
+        },
+      ],
     },
     {
-      id: "2",
-      label: "preciso",
-      image: require("../assets/images/quero.png"),
+      id: "food",
+      label: "Comida",
+      image: require("../assets/images/comida/comida.png"),
+      children: [
+        {
+          id: "rice",
+          label: "Arroz",
+          image: require("../assets/images/comida/arroz.png"),
+        },
+      ],
     },
     {
-      id: "3",
-      label: "comer",
-      image: require("../assets/images/comer.png"),
-    },
-    {
-      id: "4",
-      label: "beber",
-      image: require("../assets/images/beber.png"),
-    },
-    {
-      id: "5",
-      label: "banheiro",
-      image: require("../assets/images/banheiro.png"),
-    },
-    {
-      id: "6",
-      label: "ajuda",
-      image: require("../assets/images/ajuda.png"),
+      id: "bodyparts",
+      label: "Partes do Corpo",
+      image: require("../assets/images/corpo/cabeca.png"),
+      children: [
+        {
+          id: "head",
+          label: "Cabeça",
+          image: require("../assets/images/corpo/cabeca.png"),
+        },
+      ],
     },
   ];
 
-  const handleCardSelect = (card) => {
+  const handleParentCardSelect = (card) => {
+    setSelectedParentCard(card);
+    TtsService.speak(card.label);
+  };
+
+  const handleChildCardSelect = (card) => {
     setSentence([...sentence, card]);
     TtsService.speak(card.label);
   };
@@ -58,15 +79,32 @@ const MainScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Falavendo</Text>
-      <Sentence sentence={sentence} onClear={handleClearSentence} />
-      <View style={styles.buttonsContainer}>
-        <Button title="Falar" onPress={handleSpeakSentence} />
-        <Link href="/phrases" style={styles.link}>
-          <Text style={styles.linkText}>Frases Prontas</Text>
-        </Link>
+      <View style={styles.topSection}>
+        <Text style={styles.title}>Falar</Text>
+        <Sentence sentence={sentence} onClear={handleClearSentence} />
+        <View style={styles.buttonsContainer}>
+          <Button title="Falar" onPress={handleSpeakSentence} />
+          <Link href="/phrases" style={styles.link}>
+            <Text style={styles.linkText}>Frases Prontas</Text>
+          </Link>
+        </View>
       </View>
-      <Board cards={cards} onCardSelect={handleCardSelect} />
+
+      <View style={styles.bottomSection}>
+        <View style={styles.leftPanel}>
+          <Board cards={categories} onCardSelect={handleParentCardSelect} />
+        </View>
+        <View style={styles.rightPanel}>
+          {selectedParentCard ? (
+            <Board
+              cards={selectedParentCard.children}
+              onCardSelect={handleChildCardSelect}
+            />
+          ) : (
+            <Text style={styles.placeholderText}>Selecione uma categoria</Text>
+          )}
+        </View>
+      </View>
     </View>
   );
 };
@@ -76,6 +114,31 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20, // Adjusted padding
     paddingHorizontal: 10,
+  },
+  topSection: {
+    flex: 0.2, // Takes 40% of the screen height
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  bottomSection: {
+    flex: 0.8, // Takes 60% of the screen height
+    flexDirection: "row",
+    gap: 10, // Added gap for spacing between panels
+    alignItems: "stretch",
+  },
+  leftPanel: {
+    flex: 2, // Parent cards
+    borderRadius: 8,
+  },
+  rightPanel: {
+    flex: 2, // Child cards take more space
+    borderRadius: 8,
+  },
+  placeholderText: {
+    textAlign: "center",
+    marginTop: 20,
+    fontSize: 18,
+    color: "#666",
   },
   title: {
     fontSize: 24,
