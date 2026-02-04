@@ -1,13 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Sentence = ({ sentence, onClear }) => {
+const Sentence = ({ sentence }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {sentence.map((card) => card.label).join(" ")}
-      </Text>
-      <Button title="Limpar" onPress={onClear} />
+    <View>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>
+          {sentence.map((card) => card.label).join(" ")}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -22,9 +23,36 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  text: {
-    fontSize: 18,
+  textContainer: {
+    backgroundColor: "#f0f0f0",
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 10,
     flex: 1,
+    paddingHorizontal: 10,
+  },
+  text: {
+    color: "#000",
+    fontSize: 16,
+  },
+  buttonContainer: {
+    marginTop: 10,
+    width: 80,
+    marginRight: 10,
+    alignSelf: "center",
+  },
+  button: {
+    marginTop: 10,
+    width: 80,
+    marginRight: 10,
+    alignSelf: "center",
+    backgroundColor: "#f0f0f0",
+    padding: 10,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: "#000",
+    fontSize: 16,
   },
 });
 
