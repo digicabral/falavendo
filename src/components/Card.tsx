@@ -1,9 +1,9 @@
 import "./Card.css";
 
-const Card = ({ item, onCardSelect }: any) => {
+const Card = ({ item, onCardSelect, isSelected }: any) => {
   return (
     <button
-      className="card-container"
+      className={`card-container ${isSelected ? "selected" : ""}`}
       onClick={() => onCardSelect(item)}
       type="button"
     >

@@ -64,7 +64,11 @@ const MainScreen = () => {
       {/* BASE */}
       <div className="bottomSection">
         <div className="leftPanel">
-          <Board cards={categories} onCardSelect={handleParentCardSelect} />
+          <Board
+            cards={categories}
+            onCardSelect={handleParentCardSelect}
+            selectedCard={selectedParentCard}
+          />
         </div>
 
         <div className="rightPanel">

@@ -25,9 +25,16 @@
   display: flex;
 }
 
-.leftPanel,
+.leftPanel {
+  flex: 1;
+  background-color: #f7f7f7; /* cinza claro */
+  border-right: 2px solid #e0e0e0;
+}
+
 .rightPanel {
   flex: 1;
+  background-color: #ffffff;
+  padding-left: 10px;
 }
 
 .placeholderText {

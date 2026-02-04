@@ -16,6 +16,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
+.card-container.selected {
+  background-color: #e3f2fd;
+  border: 2px solid #2196f3;
+}
+
 .card-image {
   width: 80px;
   height: 80px;

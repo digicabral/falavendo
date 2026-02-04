@@ -5,7 +5,6 @@ const TtsService = {
       return;
     }
 
-    // Cancela fala anterior (evita sobreposição)
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
