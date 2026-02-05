@@ -164,7 +164,6 @@ export const categories = [
       { id: "preocupada", label: "Preocupada" },
       { id: "aliviada", label: "Aliviada" },
       { id: "assustada", label: "Assustada" },
-      { id: "desconfortavel", label: "Desconfortável" },
       { id: "enjoada", label: "Enjoada" },
       { id: "sonolenta", label: "Sonolenta" },
       { id: "entusiasmada", label: "Entusiasmada" },
