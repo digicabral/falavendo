@@ -1,0 +1,51 @@
+/* PhrasesScreen.css */
+.phrases-container {
+  height: 100vh;
+  padding-top: 20px;
+}
+
+.phrases-header {
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 0 16px;
+}
+
+.back-button {
+  padding: 14px 22px;
+  border-radius: 10px;
+  min-width: 140px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  left: 16px;
+  color: #007aff;
+  text-decoration: none;
+}
+
+.phrases-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.phrases-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.phrase-item {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin: 8px 16px;
+  border-radius: 8px;
+  font-size: 18px;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
