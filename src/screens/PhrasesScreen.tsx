@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import TtsService from "../services/TtsService";
 import "./PhrasesScreen.css";
 
@@ -11,7 +10,7 @@ const phrases = [
   "Obrigada!",
 ];
 
-const PhrasesScreen = () => {
+const PhrasesScreen = ({ onBack }: { onBack: () => void }) => {
   const handlePhraseSelect = (phrase: string) => {
     TtsService.speak(phrase);
   };
@@ -19,9 +18,9 @@ const PhrasesScreen = () => {
   return (
     <div className="phrases-container">
       <div className="phrases-header">
-        <Link to="/" className="back-button">
+        <button className="back-button" onClick={onBack}>
           Voltar
-        </Link>
+        </button>
         <h1 className="phrases-title">Frases Prontas</h1>
       </div>
 

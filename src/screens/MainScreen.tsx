@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import Board from "../components/Board";
 import Sentence from "../components/Sentence";
 import TtsService from "../services/TtsService";
@@ -8,10 +6,9 @@ import { categories } from "../cards/cardsdb";
 
 import "./MainScreen.css";
 
-const MainScreen = () => {
+const MainScreen = ({ onGoToPhrases }: { onGoToPhrases: () => void }) => {
   const [sentence, setSentence] = useState<any[]>([]);
   const [selectedParentCard, setSelectedParentCard] = useState<any>(null);
-  const navigate = useNavigate();
 
   const handleParentCardSelect = (card: any) => {
     setSelectedParentCard(card);
@@ -54,7 +51,7 @@ const MainScreen = () => {
 
           <button
             className="actionButton phrasesButton"
-            onClick={() => navigate("/phrases")}
+            onClick={onGoToPhrases}
           >
             Frases Prontas
           </button>
